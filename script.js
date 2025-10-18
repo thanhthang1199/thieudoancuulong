@@ -42,9 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Validate required fields
         const requiredFields = [
-            'participantName', 'participantAge', 'participantGender', 
+            'participantName', 'participantGender', 
             'participantBirthday', 'parentName', 'parentPhone', 
             'parentEmail', 'parentRelation', 'address'
+            // 'participantAge',
         ];
         
         let isValid = true;
@@ -156,4 +157,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
 

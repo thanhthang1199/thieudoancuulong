@@ -17,16 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
         return phoneRegex.test(phone.replace(/\s/g, ''));
     }
 
-    function validateAge(age) {
-        return age >= 10 && age <= 16;
-    }
+    // function validateAge(age) {
+    //     return age >= 10 && age <= 16;
+    // }
 
-    function validateDate(dateString) {
-        const date = new Date(dateString);
-        const today = new Date();
-        const age = today.getFullYear() - date.getFullYear();
-        return age >= 10 && age <= 16;
-    }
+    // function validateDate(dateString) {
+    //     const date = new Date(dateString);
+    //     const today = new Date();
+    //     const age = today.getFullYear() - date.getFullYear();
+    //     return age >= 10 && age <= 16;
+    // }
 
     // Form submission handler
     form.addEventListener('submit', function(e) {
@@ -71,16 +71,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Validate age
-        if (data.participantAge && !validateAge(parseInt(data.participantAge))) {
-            isValid = false;
-            errorMessages.push('Tuổi phải từ 10 đến 16');
-        }
+        // if (data.participantAge && !validateAge(parseInt(data.participantAge))) {
+        //     isValid = false;
+        //     errorMessages.push('Tuổi phải từ 10 đến 16');
+        // }
         
         // Validate birthday
-        if (data.participantBirthday && !validateDate(data.participantBirthday)) {
-            isValid = false;
-            errorMessages.push('Ngày sinh không hợp lệ hoặc tuổi không phù hợp');
-        }
+        // if (data.participantBirthday && !validateDate(data.participantBirthday)) {
+        //     isValid = false;
+        //     errorMessages.push('Ngày sinh không hợp lệ hoặc tuổi không phù hợp');
+        // }
         
         if (!isValid) {
             errorMessage.querySelector('p').textContent = errorMessages.join('. ');
@@ -156,3 +156,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+

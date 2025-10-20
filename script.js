@@ -57,12 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return phoneRegex.test(phone.replace(/\s/g, ''));
     }
 
-    function validateDate(dateString) {
-        const date = new Date(dateString);
-        const today = new Date();
-        const age = today.getFullYear() - date.getFullYear();
-        return age >= 10 && age <= 16;
-    }
+    // function validateDate(dateString) {
+    //     const date = new Date(dateString);
+    //     const today = new Date();
+    //     const age = today.getFullYear() - date.getFullYear();
+    //     return age >= 10 && age <= 16;
+    // }
 
     // Form submission handler
     form.addEventListener('submit', function(e) {
@@ -162,3 +162,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+

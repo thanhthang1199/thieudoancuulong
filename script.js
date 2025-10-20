@@ -101,10 +101,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Validate birthday
-        if (data.participantBirthday && !validateDate(data.participantBirthday)) {
-            isValid = false;
-            errorMessages.push('Ngày sinh không hợp lệ hoặc tuổi không phù hợp');
-        }
+        // if (data.participantBirthday && !validateDate(data.participantBirthday)) {
+        //     isValid = false;
+        //     errorMessages.push('Ngày sinh không hợp lệ hoặc tuổi không phù hợp');
+        // }
         
         if (!isValid) {
             errorMessage.querySelector('p').textContent = errorMessages.join('. ');
@@ -162,4 +162,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
 

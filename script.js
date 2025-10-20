@@ -1,3 +1,48 @@
+// Background Music Control
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('backgroundMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = musicToggle.querySelector('.music-icon');
+    
+    // Set initial volume (50%)
+    audio.volume = 0.5;
+    
+    // Music toggle functionality
+    musicToggle.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play().then(() => {
+                musicToggle.classList.add('playing');
+                musicIcon.textContent = '🎵';
+            }).catch(error => {
+                console.log('Autoplay prevented:', error);
+                // Show user interaction required message
+                musicIcon.textContent = '🔇';
+            });
+        } else {
+            audio.pause();
+            musicToggle.classList.remove('playing');
+            musicIcon.textContent = '🔇';
+        }
+    });
+    
+    // Handle autoplay policy
+    audio.addEventListener('canplay', function() {
+        // Try to play automatically
+        audio.play().then(() => {
+            musicToggle.classList.add('playing');
+        }).catch(error => {
+            console.log('Autoplay prevented:', error);
+            musicIcon.textContent = '🔇';
+        });
+    });
+    
+    // Update icon when audio ends
+    audio.addEventListener('ended', function() {
+        musicToggle.classList.remove('playing');
+        musicIcon.textContent = '🔇';
+    });
+});
+
 // Form validation và xử lý
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('campRegistrationForm');
@@ -7,26 +52,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorMessage = document.getElementById('errorMessage');
 
     // Validation functions
-    function validateEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
     function validatePhone(phone) {
         const phoneRegex = /^[0-9]{10,11}$/;
         return phoneRegex.test(phone.replace(/\s/g, ''));
     }
 
-    // function validateAge(age) {
-    //     return age >= 10 && age <= 16;
-    // }
-
-    // function validateDate(dateString) {
-    //     const date = new Date(dateString);
-    //     const today = new Date();
-    //     const age = today.getFullYear() - date.getFullYear();
-    //     return age >= 10 && age <= 16;
-    // }
+    function validateDate(dateString) {
+        const date = new Date(dateString);
+        const today = new Date();
+        const age = today.getFullYear() - date.getFullYear();
+        return age >= 10 && age <= 16;
+    }
 
     // Form submission handler
     form.addEventListener('submit', function(e) {
@@ -44,8 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const requiredFields = [
             'participantName', 'participantGender', 
             'participantBirthday', 'parentName', 'parentPhone', 
-            'parentEmail', 'parentRelation', 'address'
-            // 'participantAge',
+            'parentRelation', 'address'
         ];
         
         let isValid = true;
@@ -59,29 +94,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Validate email
-        if (data.parentEmail && !validateEmail(data.parentEmail)) {
-            isValid = false;
-            errorMessages.push('Email không hợp lệ');
-        }
-        
         // Validate phone
         if (data.parentPhone && !validatePhone(data.parentPhone)) {
             isValid = false;
             errorMessages.push('Số điện thoại không hợp lệ (10-11 chữ số)');
         }
         
-        // Validate age
-        // if (data.participantAge && !validateAge(parseInt(data.participantAge))) {
-        //     isValid = false;
-        //     errorMessages.push('Tuổi phải từ 10 đến 16');
-        // }
-        
         // Validate birthday
-        // if (data.participantBirthday && !validateDate(data.participantBirthday)) {
-        //     isValid = false;
-        //     errorMessages.push('Ngày sinh không hợp lệ hoặc tuổi không phù hợp');
-        // }
+        if (data.participantBirthday && !validateDate(data.participantBirthday)) {
+            isValid = false;
+            errorMessages.push('Ngày sinh không hợp lệ hoặc tuổi không phù hợp');
+        }
         
         if (!isValid) {
             errorMessage.querySelector('p').textContent = errorMessages.join('. ');
@@ -115,28 +138,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Real-time validation
-    const emailInput = document.getElementById('parentEmail');
     const phoneInput = document.getElementById('parentPhone');
-    const ageInput = document.getElementById('participantAge');
-    
-    emailInput.addEventListener('blur', function() {
-        if (this.value && !validateEmail(this.value)) {
-            this.style.borderColor = '#e53e3e';
-        } else {
-            this.style.borderColor = '#e2e8f0';
-        }
-    });
     
     phoneInput.addEventListener('blur', function() {
         if (this.value && !validatePhone(this.value)) {
-            this.style.borderColor = '#e53e3e';
-        } else {
-            this.style.borderColor = '#e2e8f0';
-        }
-    });
-    
-    ageInput.addEventListener('blur', function() {
-        if (this.value && !validateAge(parseInt(this.value))) {
             this.style.borderColor = '#e53e3e';
         } else {
             this.style.borderColor = '#e2e8f0';
@@ -157,5 +162,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-

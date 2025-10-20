@@ -321,11 +321,14 @@ body {
 }
 
 .thank-you-title {
+    font-family: 'Dancing Script', 'Brush Script MT', cursive;
     font-size: 4rem;
     font-weight: bold;
+    font-style: italic;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     letter-spacing: 2px;
+    transform: rotate(-2deg);
 }
 
 .thank-you-organization {
@@ -392,6 +395,7 @@ body {
     .thank-you-title {
         font-size: 3rem;
         letter-spacing: 1px;
+        transform: rotate(-1deg);
     }
 
     .thank-you-organization {
@@ -434,11 +438,126 @@ body {
     .thank-you-title {
         font-size: 2.5rem;
         letter-spacing: 0.5px;
+        transform: rotate(-0.5deg);
     }
 
     .thank-you-organization {
         font-size: 1rem;
     }
+}
+
+/* Audio Enable Prompt */
+.audio-prompt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.audio-prompt-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    margin: 20px;
+}
+
+.audio-prompt-content h3 {
+    color: #4a5568;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.audio-prompt-content p {
+    color: #718096;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.enable-audio-btn, .skip-audio-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.enable-audio-btn {
+    background: #667eea;
+    color: white;
+}
+
+.enable-audio-btn:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+}
+
+.skip-audio-btn {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.skip-audio-btn:hover {
+    background: #cbd5e0;
+    transform: translateY(-2px);
+}
+
+.audio-prompt.hidden {
+    display: none;
+}
+
+/* Music Control */
+.music-control {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.music-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.music-icon {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.music-btn.playing .music-icon {
+    animation: musicPulse 1s infinite;
+}
+
+@keyframes musicPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
 }
 
 /* Accessibility improvements */

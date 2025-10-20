@@ -63,7 +63,7 @@
                     <div class="info-card">
                         <div class="icon">📞</div>
                         <h3>Thông tin liên hệ</h3>
-                        <p>Trưởng Thắng<br><a href="tel:0397840416" class="phone-link">0397.810.415</a></p>
+                        <p>Trưởng Thắng<br><a href="tel:0397840416" class="phone-link">0397.840.415</a></p>
                     </div>
                 </div>
             </section>
@@ -72,7 +72,7 @@
             <section id="schedule" class="section">
                 <h2>Lịch trình hoạt động</h2>
                 <div class="schedule-image-container">
-                    <img src="./images/lichtrinh.jpg" alt="Lịch trình hoạt động Xuất Du 2025" class="schedule-image">
+                    <img src="./images/lichtrinh.jpg" alt="Lịch trình hoạt động trại hè" class="schedule-image">
                 </div>
             </section>
 
@@ -81,20 +81,13 @@
                 <h2>Đăng ký tham gia</h2>
                 <div class="registration-form">
                     <form id="campRegistrationForm">
-                        <h3>Thông tin Thiếu Sinh tham gia</h3>
+                        <h3>Thông tin thiếu niên tham gia</h3>
                         
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="participantName">Họ và tên <span class="required">*</span></label>
                                 <input type="text" id="participantName" name="participantName" required>
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="participantAge">Tuổi <span class="required">*</span></label>
-                                <input type="number" id="participantAge" name="participantAge" min="10" max="16" required>
-                            </div> -->
-                        </div>
-
-                        <div class="form-row">
                             <div class="form-group">
                                 <label for="participantGender">Giới tính <span class="required">*</span></label>
                                 <select id="participantGender" name="participantGender" required>
@@ -104,6 +97,9 @@
                                     <option value="other">Khác</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-group">
                                 <label for="participantBirthday">Ngày sinh <span class="required">*</span></label>
                                 <input type="date" id="participantBirthday" name="participantBirthday" required>
@@ -124,10 +120,6 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="parentEmail">Email <span class="required">*</span></label>
-                                <input type="email" id="parentEmail" name="parentEmail" required>
-                            </div>
                             <div class="form-group">
                                 <label for="parentRelation">Mối quan hệ <span class="required">*</span></label>
                                 <select id="parentRelation" name="parentRelation" required>
@@ -153,7 +145,7 @@
 
 
                         <button type="submit" class="submit-button" id="submitButton">
-                            Xác nhận tham gia
+                            Đăng ký tham gia
                         </button>
 
                         <div class="loading" id="loading">
@@ -163,7 +155,7 @@
 
                         <div class="success-message" id="successMessage">
                             <h3>🎉 Đăng ký thành công!</h3>
-                            <p>Cảm ơn Anh/Chị đã đăng ký tham gia Xuất Du. Chúng tôi sẽ liên hệ với Anh/Chị trong vòng 24 giờ để xác nhận và hướng dẫn các bước tiếp theo.</p>
+                            <p>Cảm ơn bạn đã đăng ký tham gia trại hè. Chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để xác nhận và hướng dẫn các bước tiếp theo.</p>
                         </div>
 
                         <div class="error-message" id="errorMessage">
@@ -184,10 +176,25 @@
         </div>
     </section>
 
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="./audio/TheoBuocDanAnh.mp3 type="audio/mpeg">
+        <source src="./audio/TheoBuocDanAnh.mp3" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Control Button -->
+    <div class="music-control">
+        <button id="musicToggle" class="music-btn" title="Tắt/Bật nhạc">
+            <span class="music-icon">🎵</span>
+        </button>
+    </div>
+
     <!-- Link to external JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
